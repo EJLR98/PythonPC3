@@ -1,38 +1,18 @@
-class Producto:
-    def __init__(self, codigo, nombre, precio):
-        self.codigo = codigo
-        self.nombre = nombre
-        self.precio = precio
-
-    def __str__(self):
-        return f"Código: {self.codigo}, Nombre: {self.nombre}, Precio: ${self.precio:.2f}"
-
+# main.py
 
 class Catalogo:
     def __init__(self):
         self.lista_productos = []
 
-    def agregar_producto(self, producto):
-        self.lista_productos.append(producto)
+    def agregar_producto(self, nombre, codigo):
+        self.lista_productos.append({"nombre": nombre, "codigo": codigo})
 
     def mostrar_productos(self):
-        if not self.lista_productos:
-            print("El catálogo está vacío.")
-        else:
-            print("Lista de productos:")
-            for producto in self.lista_productos:
-                print(producto)
+        for producto in self.lista_productos:
+            print(f"Nombre: {producto['nombre']}, Código: {producto['codigo']}")
 
-
-# Ejemplo de uso
-catalogo_tienda = Catalogo()
-
-# Agregar productos al catálogo
-producto1 = Producto("P001", "Batería de coche", 99.99)
-producto2 = Producto("P002", "Filtro de aceite", 12.50)
-
-catalogo_tienda.agregar_producto(producto1)
-catalogo_tienda.agregar_producto(producto2)
-
-# Mostrar la lista de productos en el catálogo
-catalogo_tienda.mostrar_productos()
+if __name__ == "__main__":
+    catalogo_tienda = Catalogo()
+    catalogo_tienda.agregar_producto("Ejemplo1", "PERU-0001-2023")
+    catalogo_tienda.agregar_producto("Ejemplo2", "MEXICO-0002-2023")
+    catalogo_tienda.mostrar_productos()
